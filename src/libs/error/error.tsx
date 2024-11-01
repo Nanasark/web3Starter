@@ -1,6 +1,5 @@
-
+import { TransactionError } from "@thirdweb-dev/react";
 import toast from "react-hot-toast";
-import { TransactionError } from '@thirdweb-dev/react';
 
 export function ErrorHandler(error: unknown) {
   if (error instanceof TransactionError) {
