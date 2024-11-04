@@ -1,8 +1,8 @@
+import useEngineWrite from "@/libs/hooks/useEngineWrite";
 import React from "react";
-import useBackendWallets from "@/libs/hooks/useBackendWallet";
 
 const test = () => {
-  const { write } = useBackendWallets({
+  const { write } = useEngineWrite({
     backendWalletAddress: "csdcsdcds",
     contractAddress: "",
     chainId: 0,
