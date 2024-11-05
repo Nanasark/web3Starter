@@ -1,5 +1,7 @@
 import useEngineWrite from "@/libs/hooks/useEngineWrite";
 import React from "react";
+import useEngineRead from "../libs/hooks/useEngineRead";
+import { Read } from './api/backend-wallet/backend.type';
 
 const test = () => {
   const { write } = useEngineWrite({
@@ -12,8 +14,26 @@ const test = () => {
     arg: ["dadas", "dsada"],
   });
 
+  const { read } = useEngineRead({
+    backendWalletAddress: "dsad",
+    chainId: 0,
+    contractAddress: "dasd",
+    engineAccessToken: "dsds",
+    engineUrl: "csc",
+    functionName: "cs",
+    hasArgs:true,
+    arg:["cs"]
+  })
+  
+   const handleRead = async () => {
+     const result = await read();
+     return result;
+   };
+
+
   const handleWrite = async () => {
     const result = await write();
+    return result
   };
 
   return (

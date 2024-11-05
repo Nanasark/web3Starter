@@ -1,10 +1,12 @@
 export interface Read {
-  arg?: string;
+  arg?: string[];
   functionName: string;
   engineUrl: string;
   contractAddress: string;
   engineAccessToken: string;
   chainId: number;
+  backendWalletAddress: string;
+  hasArgs: boolean;
 }
 
 export interface Write {
@@ -15,4 +17,5 @@ export interface Write {
   engineAccessToken: string;
   chainId: number;
   backendWalletAddress: string;
+
 }
