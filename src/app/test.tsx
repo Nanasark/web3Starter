@@ -43,7 +43,12 @@ const test = () => {
         onClick={() => {
           handleWrite;
         }}
-      ></button>
+      >test engine WRITE</button>
+      <button
+        onClick={() => {
+          handleRead;
+        }}
+      > test engine READ</button>
     </div>
   );
 };
