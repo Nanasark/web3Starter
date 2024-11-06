@@ -1,8 +1,8 @@
 import useEngineWrite from "@/libs/hooks/useEngineWrite";
 import React from "react";
 import useEngineRead from "../libs/hooks/useEngineRead";
-import { Read } from './api/backend-wallet/backend.type';
-
+import useDownloadFile from "@/libs/hooks/useDownloadFile";
+import { client } from "@/blockchain/client/client";
 const test = () => {
   const { write } = useEngineWrite({
     backendWalletAddress: "csdcsdcds",
@@ -14,6 +14,13 @@ const test = () => {
     arg: ["dadas", "dsada"],
   });
 
+  const { downloadFile } = useDownloadFile({
+    client,
+    fileName: "file Name",
+    ipfsHash: "ipfshash",
+    platformName: "this is optional",
+  });
+
   const { read } = useEngineRead({
     backendWalletAddress: "dsad",
     chainId: 0,
@@ -21,19 +28,23 @@ const test = () => {
     engineAccessToken: "dsds",
     engineUrl: "csc",
     functionName: "cs",
-    hasArgs:true,
-    arg:["cs"]
-  })
-  
-   const handleRead = async () => {
-     const result = await read();
-     return result;
-   };
+    hasArgs: true,
+    arg: ["cs"],
+  });
 
+  const handleRead = async () => {
+    const result = await read();
+    return result;
+  };
+
+  const handleDownload = async () => {
+    const result = await downloadFile();
+    return result;
+  };
 
   const handleWrite = async () => {
     const result = await write();
-    return result
+    return result;
   };
 
   return (
@@ -43,12 +54,25 @@ const test = () => {
         onClick={() => {
           handleWrite;
         }}
-      >test engine WRITE</button>
+      >
+        test engine WRITE
+      </button>
       <button
         onClick={() => {
           handleRead;
         }}
-      > test engine READ</button>
+      >
+        {" "}
+        test engine READ
+      </button>
+      <button
+        onClick={() => {
+          handleDownload;
+        }}
+      >
+        {" "}
+        test File Download 
+      </button>
     </div>
   );
 };
